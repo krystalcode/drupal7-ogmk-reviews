@@ -27,7 +27,9 @@ function ogmk_reviews_og_features_default_permissions() {
 
   // Exported og permission: 'node:shop:create review content'
   $permissions['node:shop:create review content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:shop:delete any review content'
@@ -47,7 +49,9 @@ function ogmk_reviews_og_features_default_permissions() {
 
   // Exported og permission: 'node:shop:update own review content'
   $permissions['node:shop:update own review content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:shop:view any unpublished review content'
