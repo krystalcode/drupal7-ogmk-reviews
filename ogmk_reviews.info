@@ -29,6 +29,7 @@ features[field_group][] = group_r1c1r1|node|review|form
 features[field_group][] = group_r1c1r2c1|node|review|form
 features[field_group][] = group_r1c1r2|node|review|form
 features[field_group][] = group_r1c1|node|review|form
+features[field_group][] = group_r1|node|review|form
 features[field_instance][] = node-review-body
 features[field_instance][] = node-review-og_shop_ref
 features[field_instance][] = node-review-ogmk_line_item_ref

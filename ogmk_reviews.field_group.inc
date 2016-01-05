@@ -187,5 +187,41 @@ function ogmk_reviews_field_group_info() {
   );
   $export['group_r1c1|node|review|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_r1|node|review|form';
+  $field_group->group_name = 'group_r1';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'review';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Review',
+    'weight' => '0',
+    'children' => array(
+      0 => 'group_r1c1',
+    ),
+    'format_type' => 'bootstrap_grid_row',
+    'format_settings' => array(
+      'label' => 'Review',
+      'instance_settings' => array(
+        'show_heading' => '1',
+        'heading_position' => '0',
+        'label_element' => 'h3',
+        'description_element' => 'p',
+        'panelize' => '0',
+        'bootstrap_grid_col_xs' => '12',
+        'bootstrap_grid_col_sm' => '3',
+        'bootstrap_grid_col_md' => '0',
+        'bootstrap_grid_col_lg' => '0',
+        'required_fields' => 1,
+        'classes' => 'group-r1 field-group-bootstrap_grid_row',
+        'description' => 'What did you like about the product? Did you find it as described? How did customer support do?',
+      ),
+    ),
+  );
+  $export['group_r1|node|review|form'] = $field_group;
+
   return $export;
 }
