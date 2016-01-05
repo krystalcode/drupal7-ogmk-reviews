@@ -61,3 +61,16 @@ function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id
    * )
    */
 }
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function ogmk_reviews_entity_info_alter(&$entity_info) {
+  // View mode for displaying a "commerce_line_item" (and its associated
+  // "commerce_product" and "node") together with its review or review add/edit
+  // form.
+  $entity_info['commerce_line_item']['view modes']['ogmk_review'] = array(
+    'label' => t('OGMK Review'),
+    'custom settings' => FALSE,
+  );
+}
