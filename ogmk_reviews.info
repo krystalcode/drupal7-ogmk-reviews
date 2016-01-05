@@ -4,6 +4,7 @@ core = 7.x
 package = Commerce Marketplace Features
 version = 7.x-0.1-dev
 dependencies[] = commerce_ogmk_shops
+dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = entityreference
 dependencies[] = features
