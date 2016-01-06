@@ -18,9 +18,10 @@ function ogmk_reviews_views_default_views() {
    *   labels="security"
    * )
    * @Issue(
-   *   "Limit line items to only those that have not already been reviewed"
+   *   "Line items referenced via 'ogmk_line_item_ref' from node types other
+   *   than 'review' will not be displayed in pending reviews"
    *   type="bug"
-   *   priority="normal"
+   *   priority="low"
    * )
    * @Issue(
    *   "Do not display line items from orders placed more than a certain amount
@@ -182,6 +183,10 @@ function ogmk_reviews_views_default_views() {
   $handler->display->display_options['relationships']['order_id']['table'] = 'commerce_line_item';
   $handler->display->display_options['relationships']['order_id']['field'] = 'order_id';
   $handler->display->display_options['relationships']['order_id']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_ogmk_line_item_ref_node']['id'] = 'reverse_ogmk_line_item_ref_node';
+  $handler->display->display_options['relationships']['reverse_ogmk_line_item_ref_node']['table'] = 'commerce_line_item';
+  $handler->display->display_options['relationships']['reverse_ogmk_line_item_ref_node']['field'] = 'reverse_ogmk_line_item_ref_node';
   /* Field: Commerce Line Item: Line item ID */
   $handler->display->display_options['fields']['line_item_id']['id'] = 'line_item_id';
   $handler->display->display_options['fields']['line_item_id']['table'] = 'commerce_line_item';
@@ -212,6 +217,12 @@ function ogmk_reviews_views_default_views() {
   $handler->display->display_options['filters']['state']['value'] = array(
     'completed' => 'completed',
   );
+  /* Filter criterion: Content: Nid */
+  $handler->display->display_options['filters']['nid']['id'] = 'nid';
+  $handler->display->display_options['filters']['nid']['table'] = 'node';
+  $handler->display->display_options['filters']['nid']['field'] = 'nid';
+  $handler->display->display_options['filters']['nid']['relationship'] = 'reverse_ogmk_line_item_ref_node';
+  $handler->display->display_options['filters']['nid']['operator'] = 'empty';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -240,6 +251,7 @@ function ogmk_reviews_views_default_views() {
     t('<div class="alert alert-info">Be an active part of our community by reviewing the products you have purchased. This will help our merchants and artisans improve the quality of the products and services they provide, and it will help other people choose the products that fit their needs.</div>'),
     t('There are no recently completed orders that are waiting for your review.'),
     t('Order'),
+    t('Content referencing Commerce Line item from ogmk_line_item_ref'),
     t('Line item ID'),
     t('.'),
     t(','),
