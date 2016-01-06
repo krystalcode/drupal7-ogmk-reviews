@@ -39,6 +39,12 @@ function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id
 
   /**
    * @Issue(
+   *   "Validate that the current user is the owner of the line item being reviewed"
+   *   type="bug"
+   *   priority="normal"
+   *   labels="security"
+   * )
+   * @Issue(
    *   "Disallow adding a review for a line item that already has one"
    *   type="bug"
    *   priority="normal"
@@ -67,6 +73,11 @@ function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id
    *   type="bug"
    *   priority="normal"
    *   labels="ux"
+   * )
+   * @Issue(
+   *   "Disallow users to edit their reviews, or give them a limited time to do so"
+   *   type="bug"
+   *   priority="normal"
    * )
    * @Issue(
    *   "Populate the 'ogmk_node_product_ref' field when the node is saved"
