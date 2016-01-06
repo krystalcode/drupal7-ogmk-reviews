@@ -36,6 +36,113 @@ function ogmk_reviews_views_default_views() {
    */
 
   $view = new view();
+  $view->name = 'ogmk_product_reviews';
+  $view->description = 'commerce, ogmk, reviews';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'OGMK Product Reviews';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Product Reviews';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '24';
+  $handler->display->display_options['style_plugin'] = 'views_bootstrap_list_group_plugin_style';
+  $handler->display->display_options['row_plugin'] = 'node';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'There have been no reviews for this product yet.';
+  $handler->display->display_options['empty']['area']['format'] = 'basic_html';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Product (ogmk_node_product_ref) */
+  $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['id'] = 'ogmk_node_product_ref_target_id';
+  $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['table'] = 'field_data_ogmk_node_product_ref';
+  $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['field'] = 'ogmk_node_product_ref_target_id';
+  $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['validate_options']['types'] = array(
+    'product' => 'product',
+  );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'review' => 'review',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'node/%/reviews';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Reviews';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $translatables['ogmk_product_reviews'] = array(
+    t('Master'),
+    t('Product Reviews'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('There have been no reviews for this product yet.'),
+    t('All'),
+    t('Page'),
+    t('Block'),
+  );
+  $export['ogmk_product_reviews'] = $view;
+
+  $view = new view();
   $view->name = 'ogmk_user_reviews';
   $view->description = '';
   $view->tag = 'commerce, ogmk, reviews';
