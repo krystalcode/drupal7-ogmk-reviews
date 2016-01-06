@@ -15,9 +15,23 @@ include_once 'ogmk_reviews.blocks.inc';
  * Implements hook_form_FORM_ID_alter().
  */
 function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id) {
-  // The "product" node will be fetched from the line item and will be set when
-  // the "review" node will be saved.
-  $form['ogmk_node_product_ref']['#access'] = FALSE;
+  global $user;
+  if ((int) $user->uid !== 1) {
+    // The "product" node will be fetched from the line item and will be set when
+    // the "review" node will be saved.
+    $form['ogmk_node_product_ref']['#access'] = FALSE;
+
+    // The "og_shop_ref" field will be hidden by the
+    // "entityreference_prepopulate" module. However, if query parameter is a
+    // Shop that the user is not a member of, the field will be displayed.
+    // We want to hide it in all cases, as if the query parameter is wrong,
+    // something is wrong.
+    // We also wanted it hidden in the edit form as well.
+    $form['og_shop_ref']['#access'] = FALSE;
+
+    // Hide the "ogmk_line_item_ref" field in the edit form.
+    $form['ogmk_line_item_ref']['#access'] = FALSE;
+  }
 
   // Action buttons improvements.
   $form['actions']['submit']['#value'] = t('Submit');
