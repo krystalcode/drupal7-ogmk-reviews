@@ -13,13 +13,16 @@ function ogmk_reviews_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'ogmk_review_add';
+  $context->name = 'ogmk_review_form';
   $context->description = '';
   $context->tag = 'form';
   $context->conditions = array(
-    'path' => array(
+    'node' => array(
       'values' => array(
-        'node/add/review' => 'node/add/review',
+        'review' => 'review',
+      ),
+      'options' => array(
+        'node_form' => '2',
       ),
     ),
   );
@@ -40,7 +43,7 @@ function ogmk_reviews_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('form');
-  $export['ogmk_review_add'] = $context;
+  $export['ogmk_review_form'] = $context;
 
   return $export;
 }
