@@ -63,5 +63,6 @@ features[variable][] = menu_parent_review
 features[variable][] = node_options_review
 features[variable][] = node_preview_review
 features[variable][] = node_submitted_review
+features[variable][] = pathauto_node_review_pattern
 features[variable][] = save_continue_review
 features[views_view][] = ogmk_user_reviews
