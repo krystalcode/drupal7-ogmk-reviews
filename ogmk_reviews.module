@@ -89,3 +89,41 @@ function ogmk_reviews_entity_info_alter(&$entity_info) {
     'custom settings' => FALSE,
   );
 }
+
+/**
+ * Implements hook_node_presave().
+ *
+ * Make sure the entityreference fields for the Product and the Shop of the
+ * review correctly correspond to the ones of the associated line item.
+ */
+function ogmk_reviews_node_presave($node) {
+  if ($node->type !== 'review') {
+    return;
+  }
+
+  // Get the line item of the review.
+  $review_wrapper = entity_metadata_wrapper('node', $node);
+  $line_item = $review_wrapper->ogmk_line_item_ref->value();
+  $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
+
+  // Get the "product" node referencing the line item's "commerce_product"
+  // entity.
+  $commerce_product = $line_item_wrapper->commerce_product->value();
+  $node_product = commerce_ogmk_products_product_get_node($commerce_product);
+
+  // Populate the "ogmk_node_product_ref" field if it is empty or if it has
+  // changed (which shouldn't happen anyways).
+  $currentNodeProductValue = $review_wrapper->ogmk_node_product_ref->value();
+  if (!$currentNodeProductValue || $currentNodeProductValue != $node_product->nid) {
+    $node->ogmk_node_product_ref[LANGUAGE_NONE][0]['target_id'] = $node_product->nid;
+  }
+
+  // Make sure that the "og_shop_ref" field is populated with the correct "shop"
+  // node that corresponds to the line item. A user could possibly pass on a
+  // different shop via the URL query parameter.
+  $node_shop = $line_item_wrapper->og_shop_ref->value();
+  $currentNodeShopValue = $review_wrapper->og_shop_ref->value();
+  if (!$currentNodeShopValue || $currentNodeShopValue != $node_shop->nid) {
+    $node->og_shop_ref[LANGUAGE_NONE][0]['target_id'] = $node_shop->nid;
+  }
+}
