@@ -170,7 +170,7 @@ function ogmk_reviews_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="alert alert-info">Be an active part of our community by reviewing the products you have purchased. This will help our merchants and artisans improve the quality of the products and services they provide, and it will help other people choose the products that fit their needs.</div>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="alert alert-info">Be an active part of our community by reviewing the products you have purchased. Reviews help our artisans and merchants improve the quality of the products and services they provide. They also help other people choose the products that best fit their needs.</div>';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -248,7 +248,7 @@ function ogmk_reviews_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('<div class="alert alert-info">Be an active part of our community by reviewing the products you have purchased. This will help our merchants and artisans improve the quality of the products and services they provide, and it will help other people choose the products that fit their needs.</div>'),
+    t('<div class="alert alert-info">Be an active part of our community by reviewing the products you have purchased. Reviews help our artisans and merchants improve the quality of the products and services they provide. They also help other people choose the products that best fit their needs.</div>'),
     t('There are no recently completed orders that are waiting for your review.'),
     t('Order'),
     t('Content referencing Commerce Line item from ogmk_line_item_ref'),
