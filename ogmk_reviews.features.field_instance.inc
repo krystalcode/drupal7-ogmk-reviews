@@ -27,10 +27,8 @@ function ogmk_reviews_field_default_field_instances() {
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 1,
       ),
     ),
@@ -84,18 +82,15 @@ function ogmk_reviews_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 2,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -148,18 +143,15 @@ function ogmk_reviews_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 6,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -206,18 +198,15 @@ function ogmk_reviews_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 5,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -265,12 +254,20 @@ function ogmk_reviews_field_default_field_instances() {
           ),
         ),
         'type' => 'fivestar_formatter_default',
-        'weight' => 4,
+        'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'fivestar',
+        'settings' => array(
+          'expose' => TRUE,
+          'style' => 'average',
+          'text' => 'none',
+          'widget' => array(
+            'fivestar_widget' => 'sites/all/modules/contrib/fivestar/widgets/flames/flames.css',
+          ),
+        ),
+        'type' => 'fivestar_formatter_default',
         'weight' => 0,
       ),
     ),
