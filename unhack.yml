@@ -1,0 +1,12 @@
+project:
+    name: krystalcode/drupal7-ogmk-reviews
+
+schema:
+    include:    []
+    exclude:    []
+    extensions: ["info", "module", "install", "inc", "php", "js", "scss", "css"]
+
+issues:
+  - title:    Allow users to upvote/downvote reviews
+    type:     feature
+    priority: normal
