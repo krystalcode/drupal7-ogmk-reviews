@@ -23,6 +23,37 @@ function ogmk_reviews_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_r1c1r1c1|node|review|form';
+  $field_group->group_name = 'group_r1c1r1c1';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'review';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_r1c1r1';
+  $field_group->data = array(
+    'label' => 'Row 1 Col 1 Row 1 Col 1',
+    'weight' => '14',
+    'children' => array(
+      0 => 'title',
+    ),
+    'format_type' => 'bootstrap_grid_col',
+    'format_settings' => array(
+      'label' => 'Row 1 Col 1 Row 1 Col 1',
+      'instance_settings' => array(
+        'panelize' => '0',
+        'bootstrap_grid_col_xs' => '12',
+        'bootstrap_grid_col_sm' => '6',
+        'bootstrap_grid_col_md' => '0',
+        'bootstrap_grid_col_lg' => '0',
+        'required_fields' => 1,
+        'classes' => 'group-r1c1r1c1 field-group-bootstrap_grid_col',
+      ),
+    ),
+  );
+  $export['group_r1c1r1c1|node|review|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_r1c1r1c2|node|review|form';
   $field_group->group_name = 'group_r1c1r1c2';
   $field_group->entity_type = 'node';
