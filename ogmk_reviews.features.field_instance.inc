@@ -22,7 +22,7 @@ function ogmk_reviews_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -84,7 +84,7 @@ function ogmk_reviews_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -197,10 +197,14 @@ function ogmk_reviews_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 1,
+          'view_mode' => 'ogmk_bootstrap_media',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -243,18 +247,18 @@ function ogmk_reviews_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'fivestar',
         'settings' => array(
           'expose' => TRUE,
           'style' => 'average',
-          'text' => 'average',
+          'text' => 'none',
           'widget' => array(
-            'fivestar_widget' => NULL,
+            'fivestar_widget' => 'sites/all/modules/contrib/fivestar/widgets/flames/flames.css',
           ),
         ),
         'type' => 'fivestar_formatter_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -289,7 +293,7 @@ function ogmk_reviews_field_default_field_instances() {
       'module' => 'fivestar',
       'settings' => array(
         'widget' => array(
-          'fivestar_widget' => 'default',
+          'fivestar_widget' => 'sites/all/modules/contrib/fivestar/widgets/flames/flames.css',
         ),
       ),
       'type' => 'stars',

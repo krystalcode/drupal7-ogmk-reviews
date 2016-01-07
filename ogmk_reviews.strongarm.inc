@@ -82,8 +82,8 @@ function ogmk_reviews_strongarm() {
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '2',
-            'visible' => TRUE,
+            'weight' => '3',
+            'visible' => FALSE,
           ),
         ),
       ),
