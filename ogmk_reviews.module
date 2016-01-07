@@ -73,9 +73,10 @@ function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id
 
   /**
    * @Issue(
-   *   "Validate that the current user is the owner of the line item being reviewed"
+   *   "Validate that the current user is the owner of the line item being
+   *   reviewed upon form submission"
    *   type="bug"
-   *   priority="normal"
+   *   priority="low"
    *   labels="security"
    * )
    * @Issue(
