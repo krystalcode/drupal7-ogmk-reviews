@@ -192,7 +192,7 @@ function ogmk_reviews_node_presave($node) {
  *   The node id otherwise.
  */
 function ogmk_base_line_item_has_referencing_review($line_item) {
-  $options = array('limit' => 1);
+  $options = array('start' => 0, 'length' => 1);
   $result  = ogmk_base_line_item_has_referencing_nodes($line_item, 'review', $options);
 
   if (!$result) {
@@ -214,7 +214,7 @@ function ogmk_base_line_item_has_referencing_review($line_item) {
  *   The node object otherwise.
  */
 function ogmk_base_line_item_get_referencing_review($line_item) {
-  $options = array('limit' => 1);
+  $options = array('start' => 0, 'length' => 1);
   $result  = ogmk_base_line_item_get_referencing_nodes($line_item, 'review', $options);
 
   if (!$result) {
