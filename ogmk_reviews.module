@@ -125,12 +125,6 @@ function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id
    *   type="bug"
    *   priority="normal"
    * )
-   * @Issue(
-   *   "Populate the 'ogmk_node_product_ref' field when the node is saved"
-   *   type="bug"
-   *   priority="normal"
-   *   labels="data"
-   * )
    */
 }
 
