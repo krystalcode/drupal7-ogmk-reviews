@@ -62,9 +62,9 @@ function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id
 
   // Redirect to the Review page if one already exists for the requested line
   // item. There should only be one Review for each line item.
-  $review = ogmk_base_line_item_get_referencing_review($line_item_id);
-  if (!empty($review)) {
-    drupal_goto('node/' . $review->nid);
+  $review_id = ogmk_base_line_item_has_referencing_review($line_item_id);
+  if (!empty($review_id)) {
+    drupal_goto('node/' . $review_id);
   }
 
   // Action buttons improvements.
