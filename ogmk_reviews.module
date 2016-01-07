@@ -108,7 +108,7 @@ function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id
    *   labels="security, testing"
    * )
    * @Issue(
-   *   "Improve the stars rating appearance and remove/hide the dropdown"
+   *   "Improve the stars rating appearance"
    *   type="bug"
    *   priority="normal"
    *   labels="ux"
