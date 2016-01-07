@@ -12,6 +12,15 @@ include_once 'ogmk_reviews.blocks.inc';
  */
 
 /**
+ * @Issue(
+ *   "Hide the dropdown in php instead of css"
+ *   type="improvement"
+ *   priority="low"
+ *   labels="modularity"
+ * )
+ */
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id) {
