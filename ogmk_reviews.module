@@ -17,6 +17,31 @@ include_once 'ogmk_reviews.blocks.inc';
 function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id) {
   global $user;
   if ((int) $user->uid !== 1) {
+    // Validate that the current user is the owner of the line item being
+    // reviewed.
+
+    // It is be better to get the line item id from the form rathern than the
+    // query parameter, since this is the value is going to be submitted.
+    $language = $form['ogmk_line_item_ref']['#language'];
+    $line_item_id = $form_state['entityreference_prepopulate']['node']['review']['ogmk_line_item_ref'][0];
+    $line_item = commerce_line_item_load($line_item_id);
+    // The user is stored in the order and not in the line item.
+    $order = commerce_order_load($line_item->order_id);
+
+    // Deny access to the form.
+    /**
+     * @Issue(
+     *   "Throw an Access Denied page instead so that the line item block isn't
+     *   rendered either"
+     *   type="improvement"
+     *   priority="normal"
+     *   labels="security"
+     * )
+     */
+    if ((int) $user->uid !== (int) $order->uid) {
+      $form['#access'] = FALSE;
+    }
+
     // The "product" node will be fetched from the line item and will be set when
     // the "review" node will be saved.
     $form['ogmk_node_product_ref']['#access'] = FALSE;
