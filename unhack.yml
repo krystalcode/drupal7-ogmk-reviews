@@ -10,3 +10,6 @@ issues:
   - title:    Allow users to upvote/downvote reviews
     type:     feature
     priority: normal
+  - title:    Allow shop managers [and other users?] to respond to reviews
+    type:     feature
+    priority: low
