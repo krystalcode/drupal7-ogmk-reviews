@@ -15,17 +15,19 @@ include_once 'ogmk_reviews.blocks.inc';
  * Implements hook_form_FORM_ID_alter().
  */
 function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id) {
+  // Get the line item's id since it is used in a couple of places later on.
+  // It is be better to get the line item id from the form rathern than the
+  // query parameter, since this is the value is going to be submitted.
+  $language = $form['ogmk_line_item_ref']['#language'];
+  $line_item_id = $form_state['entityreference_prepopulate']['node']['review']['ogmk_line_item_ref'][0];
+
   global $user;
   if ((int) $user->uid !== 1) {
     // Validate that the current user is the owner of the line item being
     // reviewed.
 
-    // It is be better to get the line item id from the form rathern than the
-    // query parameter, since this is the value is going to be submitted.
-    $language = $form['ogmk_line_item_ref']['#language'];
-    $line_item_id = $form_state['entityreference_prepopulate']['node']['review']['ogmk_line_item_ref'][0];
-    $line_item = commerce_line_item_load($line_item_id);
     // The user is stored in the order and not in the line item.
+    $line_item = commerce_line_item_load($line_item_id);
     $order = commerce_order_load($line_item->order_id);
 
     // Deny access to the form.
@@ -58,6 +60,13 @@ function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id
     $form['ogmk_line_item_ref']['#access'] = FALSE;
   }
 
+  // Redirect to the Review page if one already exists for the requested line
+  // item. There should only be one Review for each line item.
+  $review = ogmk_base_line_item_get_referencing_review($line_item_id);
+  if (!empty($review)) {
+    drupal_goto('node/' . $review->nid);
+  }
+
   // Action buttons improvements.
   $form['actions']['submit']['#value'] = t('Submit');
   $form['actions']['submit']['#attributes']['class'][] = 'fa fa-check';
@@ -70,9 +79,11 @@ function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id
    *   labels="security"
    * )
    * @Issue(
-   *   "Disallow adding a review for a line item that already has one"
+   *   "Block adding a review for a line item that already has one using
+   *   hook_node_presave"
    *   type="bug"
-   *   priority="normal"
+   *   priority="low"
+   *   labels="data"
    * )
    * @Issue(
    *   "Add an info alert with information about how to make a review"
@@ -162,4 +173,52 @@ function ogmk_reviews_node_presave($node) {
   if (!$currentNodeShopValue || $currentNodeShopValue != $node_shop->nid) {
     $node->og_shop_ref[LANGUAGE_NONE][0]['target_id'] = $node_shop->nid;
   }
+}
+
+/**
+ * Public API.
+ */
+
+/**
+ * Check if there is a "review" node referencing a line item.
+ *
+ * @param int|object $line_item
+ *   The line item id or object for whom to check if there is a referencing
+ *   node.
+ *
+ * @return boolean|int
+ *   FALSE if there is no node referencing the line item.
+ *   The node id otherwise.
+ */
+function ogmk_base_line_item_has_referencing_review($line_item) {
+  $options = array('limit' => 1);
+  $result  = ogmk_base_line_item_has_referencing_nodes($line_item, 'review', $options);
+
+  if (!$result) {
+    return FALSE;
+  }
+
+  return current($result)->nid;
+}
+
+/**
+ * Get the "review" node referencing a line item, if there is one.
+ *
+ * @param int|object $line_item
+ *   The line item id or object for whom to check if there is a referencing
+ *   node.
+ *
+ * @return null|object
+ *   NULL if there is no node referencing the line item.
+ *   The node object otherwise.
+ */
+function ogmk_base_line_item_get_referencing_review($line_item) {
+  $options = array('limit' => 1);
+  $result  = ogmk_base_line_item_get_referencing_nodes($line_item, 'review', $options);
+
+  if (!$result) {
+    return NULL;
+  }
+
+  return current($result);
 }
