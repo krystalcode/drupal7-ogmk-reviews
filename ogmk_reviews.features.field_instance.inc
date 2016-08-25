@@ -72,8 +72,8 @@ function ogmk_reviews_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-review-og_shop_ref'.
-  $field_instances['node-review-og_shop_ref'] = array(
+  // Exported field_instance: 'node-review-ogmk_shop_ref'.
+  $field_instances['node-review-ogmk_shop_ref'] = array(
     'bundle' => 'review',
     'default_value' => NULL,
     'default_value_function' => 'entityreference_prepopulate_field_default_value',
@@ -94,7 +94,7 @@ function ogmk_reviews_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'og_shop_ref',
+    'field_name' => 'ogmk_shop_ref',
     'label' => 'Shop',
     'required' => 1,
     'settings' => array(

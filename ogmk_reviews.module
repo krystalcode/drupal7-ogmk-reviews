@@ -57,13 +57,13 @@ function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id
     // the "review" node will be saved.
     $form['ogmk_node_product_ref']['#access'] = FALSE;
 
-    // The "og_shop_ref" field will be hidden by the
+    // The "ogmk_shop_ref" field will be hidden by the
     // "entityreference_prepopulate" module. However, if query parameter is a
     // Shop that the user is not a member of, the field will be displayed.
     // We want to hide it in all cases, as if the query parameter is wrong,
     // something is wrong.
     // We also wanted it hidden in the edit form as well.
-    $form['og_shop_ref']['#access'] = FALSE;
+    $form['ogmk_shop_ref']['#access'] = FALSE;
 
     // Hide the "ogmk_line_item_ref" field in the edit form.
     $form['ogmk_line_item_ref']['#access'] = FALSE;
@@ -169,13 +169,13 @@ function ogmk_reviews_node_presave($node) {
     $node->ogmk_node_product_ref[LANGUAGE_NONE][0]['target_id'] = $node_product->nid;
   }
 
-  // Make sure that the "og_shop_ref" field is populated with the correct "shop"
-  // node that corresponds to the line item. A user could possibly pass on a
-  // different shop via the URL query parameter.
-  $node_shop = $line_item_wrapper->og_shop_ref->value();
-  $currentNodeShopValue = $review_wrapper->og_shop_ref->value();
+  // Make sure that the "ogmk_shop_ref" field is populated with the correct
+  // "shop" node that corresponds to the line item. A user could possibly pass
+  // on a different shop via the URL query parameter.
+  $node_shop = $line_item_wrapper->ogmk_shop_ref->value();
+  $currentNodeShopValue = $review_wrapper->ogmk_shop_ref->value();
   if (!$currentNodeShopValue || $currentNodeShopValue != $node_shop->nid) {
-    $node->og_shop_ref[LANGUAGE_NONE][0]['target_id'] = $node_shop->nid;
+    $node->ogmk_shop_ref[LANGUAGE_NONE][0]['target_id'] = $node_shop->nid;
   }
 }
 
