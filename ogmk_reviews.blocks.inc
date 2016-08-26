@@ -47,7 +47,7 @@ function _ogmk_reviews_block_view__review_form_line_item($delta = '') {
   $menu_item = menu_get_item();
 
   // If we are on a node add form, the line item id must be present in the URL.
-  if ($menu_item['path'] === 'node/add/review') {
+  if ($menu_item['path'] === 'node/add/ogmk-review') {
     // We expect the "ogmk_line_item_ref" field to be prepopulated via the URL.
     // Something is wrong if this is not the case.
     if (empty($_GET['ogmk_line_item_ref'])) {
@@ -60,8 +60,8 @@ function _ogmk_reviews_block_view__review_form_line_item($delta = '') {
   elseif ($menu_item['path'] === 'node/%/edit') {
     $node = $menu_item['map'][1];
 
-    // Make sure we're on a "review" node edit form.
-    if ($node->type !== 'review') {
+    // Make sure we're on a "ogmk_review" node edit form.
+    if ($node->type !== 'ogmk_review') {
       return array();
     }
 

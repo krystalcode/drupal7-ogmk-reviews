@@ -23,12 +23,12 @@ include_once 'ogmk_reviews.blocks.inc';
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function ogmk_reviews_form_review_node_form_alter(&$form, &$form_state, $form_id) {
+function ogmk_reviews_form_ogmk_review_node_form_alter(&$form, &$form_state, $form_id) {
   // Get the line item's id since it is used in a couple of places later on.
   // It is be better to get the line item id from the form rathern than the
   // query parameter, since this is the value is going to be submitted.
   $language = $form['ogmk_line_item_ref']['#language'];
-  $line_item_id = $form_state['entityreference_prepopulate']['node']['review']['ogmk_line_item_ref'][0];
+  $line_item_id = $form_state['entityreference_prepopulate']['node']['ogmk_review']['ogmk_line_item_ref'][0];
 
   global $user;
   if ((int) $user->uid !== 1) {
@@ -148,7 +148,7 @@ function ogmk_reviews_entity_info_alter(&$entity_info) {
  * review correctly correspond to the ones of the associated line item.
  */
 function ogmk_reviews_node_presave($node) {
-  if ($node->type !== 'review') {
+  if ($node->type !== 'ogmk_review') {
     return;
   }
 
@@ -184,7 +184,7 @@ function ogmk_reviews_node_presave($node) {
  */
 
 /**
- * Check if there is a "review" node referencing a line item.
+ * Check if there is a "ogmk_review" node referencing a line item.
  *
  * @param int|object $line_item
  *   The line item id or object for whom to check if there is a referencing
@@ -196,7 +196,7 @@ function ogmk_reviews_node_presave($node) {
  */
 function ogmk_base_line_item_has_referencing_review($line_item) {
   $options = array('start' => 0, 'length' => 1);
-  $result  = ogmk_base_line_item_has_referencing_nodes($line_item, 'review', $options);
+  $result  = ogmk_base_line_item_has_referencing_nodes($line_item, 'ogmk_review', $options);
 
   if (!$result) {
     return FALSE;
@@ -206,7 +206,7 @@ function ogmk_base_line_item_has_referencing_review($line_item) {
 }
 
 /**
- * Get the "review" node referencing a line item, if there is one.
+ * Get the "ogmk_review" node referencing a line item, if there is one.
  *
  * @param int|object $line_item
  *   The line item id or object for whom to check if there is a referencing
@@ -218,7 +218,7 @@ function ogmk_base_line_item_has_referencing_review($line_item) {
  */
 function ogmk_base_line_item_get_referencing_review($line_item) {
   $options = array('start' => 0, 'length' => 1);
-  $result  = ogmk_base_line_item_get_referencing_nodes($line_item, 'review', $options);
+  $result  = ogmk_base_line_item_get_referencing_nodes($line_item, 'ogmk_review', $options);
 
   if (!$result) {
     return NULL;

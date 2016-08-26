@@ -31,7 +31,7 @@ function ogmk_reviews_views_api($module = NULL, $api = NULL) {
  */
 function ogmk_reviews_node_info() {
   $items = array(
-    'review' => array(
+    'ogmk_review' => array(
       'name' => t('Review'),
       'base' => 'node_content',
       'description' => '',

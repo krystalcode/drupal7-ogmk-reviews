@@ -10,9 +10,9 @@
 function ogmk_reviews_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-review-body'.
-  $field_instances['node-review-body'] = array(
-    'bundle' => 'review',
+  // Exported field_instance: 'node-ogmk_review-body'.
+  $field_instances['node-ogmk_review-body'] = array(
+    'bundle' => 'ogmk_review',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -72,9 +72,9 @@ function ogmk_reviews_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-review-ogmk_shop_ref'.
-  $field_instances['node-review-ogmk_shop_ref'] = array(
-    'bundle' => 'review',
+  // Exported field_instance: 'node-ogmk_review-ogmk_shop_ref'.
+  $field_instances['node-ogmk_review-ogmk_shop_ref'] = array(
+    'bundle' => 'ogmk_review',
     'default_value' => NULL,
     'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
@@ -133,9 +133,9 @@ function ogmk_reviews_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-review-ogmk_line_item_ref'.
-  $field_instances['node-review-ogmk_line_item_ref'] = array(
-    'bundle' => 'review',
+  // Exported field_instance: 'node-ogmk_review-ogmk_line_item_ref'.
+  $field_instances['node-ogmk_review-ogmk_line_item_ref'] = array(
+    'bundle' => 'ogmk_review',
     'default_value' => NULL,
     'default_value_function' => 'entityreference_prepopulate_field_default_value',
     'deleted' => 0,
@@ -188,9 +188,9 @@ function ogmk_reviews_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-review-ogmk_node_product_ref'.
-  $field_instances['node-review-ogmk_node_product_ref'] = array(
-    'bundle' => 'review',
+  // Exported field_instance: 'node-ogmk_review-ogmk_node_product_ref'.
+  $field_instances['node-ogmk_review-ogmk_node_product_ref'] = array(
+    'bundle' => 'ogmk_review',
     'default_value' => NULL,
     'default_value_function' => '',
     'deleted' => 0,
@@ -239,9 +239,9 @@ function ogmk_reviews_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-review-ogmk_rating'.
-  $field_instances['node-review-ogmk_rating'] = array(
-    'bundle' => 'review',
+  // Exported field_instance: 'node-ogmk_review-ogmk_rating'.
+  $field_instances['node-ogmk_review-ogmk_rating'] = array(
+    'bundle' => 'ogmk_review',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',

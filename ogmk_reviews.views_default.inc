@@ -89,7 +89,7 @@ function ogmk_reviews_views_default_views() {
   $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['validate']['type'] = 'node';
   $handler->display->display_options['arguments']['ogmk_node_product_ref_target_id']['validate_options']['types'] = array(
-    'product' => 'product',
+    'ogmk_product' => 'ogmk_product',
   );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -103,7 +103,7 @@ function ogmk_reviews_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'review' => 'review',
+    'ogmk_review' => 'ogmk_review',
   );
 
   /* Display: Page */

@@ -19,7 +19,7 @@ function ogmk_reviews_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'review' => 'review',
+        'ogmk_review' => 'ogmk_review',
       ),
       'options' => array(
         'node_form' => '2',

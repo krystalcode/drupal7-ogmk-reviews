@@ -23,10 +23,10 @@ function ogmk_reviews_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_r1c1r1c1|node|review|form';
+  $field_group->identifier = 'group_r1c1r1c1|node|ogmk_review|form';
   $field_group->group_name = 'group_r1c1r1c1';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'review';
+  $field_group->bundle = 'ogmk_review';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_r1c1r1';
   $field_group->data = array(
@@ -49,15 +49,15 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1c1r1c1|node|review|form'] = $field_group;
+  $export['group_r1c1r1c1|node|ogmk_review|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_r1c1r1c2|node|review|form';
+  $field_group->identifier = 'group_r1c1r1c2|node|ogmk_review|form';
   $field_group->group_name = 'group_r1c1r1c2';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'review';
+  $field_group->bundle = 'ogmk_review';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_r1c1r1';
   $field_group->data = array(
@@ -80,15 +80,15 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1c1r1c2|node|review|form'] = $field_group;
+  $export['group_r1c1r1c2|node|ogmk_review|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_r1c1r1|node|review|form';
+  $field_group->identifier = 'group_r1c1r1|node|ogmk_review|form';
   $field_group->group_name = 'group_r1c1r1';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'review';
+  $field_group->bundle = 'ogmk_review';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_r1c1';
   $field_group->data = array(
@@ -117,15 +117,15 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1c1r1|node|review|form'] = $field_group;
+  $export['group_r1c1r1|node|ogmk_review|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_r1c1r2c1|node|review|form';
+  $field_group->identifier = 'group_r1c1r2c1|node|ogmk_review|form';
   $field_group->group_name = 'group_r1c1r2c1';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'review';
+  $field_group->bundle = 'ogmk_review';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_r1c1r2';
   $field_group->data = array(
@@ -148,15 +148,15 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1c1r2c1|node|review|form'] = $field_group;
+  $export['group_r1c1r2c1|node|ogmk_review|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_r1c1r2|node|review|form';
+  $field_group->identifier = 'group_r1c1r2|node|ogmk_review|form';
   $field_group->group_name = 'group_r1c1r2';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'review';
+  $field_group->bundle = 'ogmk_review';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_r1c1';
   $field_group->data = array(
@@ -184,15 +184,15 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1c1r2|node|review|form'] = $field_group;
+  $export['group_r1c1r2|node|ogmk_review|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_r1c1|node|review|form';
+  $field_group->identifier = 'group_r1c1|node|ogmk_review|form';
   $field_group->group_name = 'group_r1c1';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'review';
+  $field_group->bundle = 'ogmk_review';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_r1';
   $field_group->data = array(
@@ -216,15 +216,15 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1c1|node|review|form'] = $field_group;
+  $export['group_r1c1|node|ogmk_review|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_r1|node|review|form';
+  $field_group->identifier = 'group_r1|node|ogmk_review|form';
   $field_group->group_name = 'group_r1';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'review';
+  $field_group->bundle = 'ogmk_review';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -252,7 +252,7 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1|node|review|form'] = $field_group;
+  $export['group_r1|node|ogmk_review|form'] = $field_group;
 
   return $export;
 }

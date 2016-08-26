@@ -10,37 +10,37 @@
 function ogmk_reviews_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: 'create review content'.
-  $permissions['create review content'] = array(
-    'name' => 'create review content',
+  // Exported permission: 'create ogmk_review content'.
+  $permissions['create ogmk_review content'] = array(
+    'name' => 'create ogmk_review content',
     'roles' => array(),
     'module' => 'node',
   );
 
-  // Exported permission: 'delete any review content'.
-  $permissions['delete any review content'] = array(
-    'name' => 'delete any review content',
+  // Exported permission: 'delete any ogmk_review content'.
+  $permissions['delete any ogmk_review content'] = array(
+    'name' => 'delete any ogmk_review content',
     'roles' => array(),
     'module' => 'node',
   );
 
-  // Exported permission: 'delete own review content'.
-  $permissions['delete own review content'] = array(
-    'name' => 'delete own review content',
+  // Exported permission: 'delete own ogmk_review content'.
+  $permissions['delete own ogmk_review content'] = array(
+    'name' => 'delete own ogmk_review content',
     'roles' => array(),
     'module' => 'node',
   );
 
-  // Exported permission: 'edit any review content'.
-  $permissions['edit any review content'] = array(
-    'name' => 'edit any review content',
+  // Exported permission: 'edit any ogmk_review content'.
+  $permissions['edit any ogmk_review content'] = array(
+    'name' => 'edit any ogmk_review content',
     'roles' => array(),
     'module' => 'node',
   );
 
-  // Exported permission: 'edit own review content'.
-  $permissions['edit own review content'] = array(
-    'name' => 'edit own review content',
+  // Exported permission: 'edit own ogmk_review content'.
+  $permissions['edit own ogmk_review content'] = array(
+    'name' => 'edit own ogmk_review content',
     'roles' => array(),
     'module' => 'node',
   );
