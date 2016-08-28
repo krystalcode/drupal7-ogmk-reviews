@@ -12,6 +12,26 @@ include_once 'ogmk_reviews.blocks.inc';
  */
 
 /**
+ * Implements hook_menu().
+ */
+function ogmk_reviews_menu() {
+  $items = array();
+
+  $items['node/%node/reviews'] = array(
+    'title'            => 'Reviews',
+    'access callback'  => '_ogmk_reviews_reviews_access',
+    'access arguments' => array(1),
+    'page callback'    => '_ogmk_reviews_reviews_page',
+    'page arguments'   => array(1),
+    'type'             => MENU_LOCAL_TASK,
+    'file'             => 'ogmk_reviews.pages.inc',
+    'weight'           => 3,
+  );
+
+  return $items;
+}
+
+/**
  * @Issue(
  *   "Hide the dropdown in php instead of css"
  *   type="improvement"
@@ -225,4 +245,43 @@ function ogmk_base_line_item_get_referencing_review($line_item) {
   }
 
   return current($result);
+}
+
+/**
+ * Functions for internal use.
+ */
+
+/**
+ * Access callback for the reviews page.
+ *
+ * @param object $node
+ *   The node (shop or product) for which to display the reviews page.
+ *
+ * @return boolean
+ *   Whether the current user has access or not to the reviews page.
+ */
+function _ogmk_reviews_reviews_access($node) {
+  /**
+   * @Issue(
+   *   "Respect the access settings defined in the views, or check the 'view
+   *   published content' permission"
+   *   type="bug"
+   *   priority="low"
+   *   labels="permissions, security"
+   * )
+   */
+  if (in_array($node->type, array('ogmk_product', 'ogmk_shop'))) {
+    return TRUE;
+  }
+
+  // Deny access if we are not on a product or shop page.
+  /**
+   * @Issue(
+   *   "Return a 'page not found' page if the node type is not ogmk_product or
+   *   ogmk_shop"
+   *   type="bug"
+   *   labels="normal"
+   * )
+   */
+  return FALSE;
 }
