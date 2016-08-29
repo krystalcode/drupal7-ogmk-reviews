@@ -180,7 +180,7 @@ function ogmk_reviews_node_presave($node) {
   // Get the "product" node referencing the line item's "commerce_product"
   // entity.
   $commerce_product = $line_item_wrapper->commerce_product->value();
-  $node_product = commerce_ogmk_products_product_get_node($commerce_product);
+  $node_product = ogmk_products_product_get_node($commerce_product);
 
   // Populate the "ogmk_node_product_ref" field if it is empty or if it has
   // changed (which shouldn't happen anyways).
