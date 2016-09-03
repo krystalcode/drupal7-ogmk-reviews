@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function ogmk_reviews_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   /**
    * @Issue(
@@ -49,7 +49,7 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1c1r1c1|node|ogmk_review|form'] = $field_group;
+  $field_groups['group_r1c1r1c1|node|ogmk_review|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -80,7 +80,7 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1c1r1c2|node|ogmk_review|form'] = $field_group;
+  $field_groups['group_r1c1r1c2|node|ogmk_review|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -117,7 +117,7 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1c1r1|node|ogmk_review|form'] = $field_group;
+  $field_groups['group_r1c1r1|node|ogmk_review|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -148,7 +148,7 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1c1r2c1|node|ogmk_review|form'] = $field_group;
+  $field_groups['group_r1c1r2c1|node|ogmk_review|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -184,7 +184,7 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1c1r2|node|ogmk_review|form'] = $field_group;
+  $field_groups['group_r1c1r2|node|ogmk_review|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -216,7 +216,7 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1c1|node|ogmk_review|form'] = $field_group;
+  $field_groups['group_r1c1|node|ogmk_review|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -252,7 +252,17 @@ function ogmk_reviews_field_group_info() {
       ),
     ),
   );
-  $export['group_r1|node|ogmk_review|form'] = $field_group;
+  $field_groups['group_r1|node|ogmk_review|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Col 1');
+  t('Review');
+  t('Row 1 Col 1 Row 1 Col 1');
+  t('Row 1 Col 1 Row 1 Col 2');
+  t('Row 1 Col 1 Row 2');
+  t('Row 1 Col 1 Row 2 Col 1');
+  t('Row 1 Column 1 Row 1');
+
+  return $field_groups;
 }
