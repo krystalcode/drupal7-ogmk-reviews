@@ -66,7 +66,7 @@ function ogmk_reviews_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'There have been no reviews for this product yet.';
-  $handler->display->display_options['empty']['area']['format'] = 'basic_html';
+  $handler->display->display_options['empty']['area']['format'] = 'ogmk_basic_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -174,7 +174,7 @@ function ogmk_reviews_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'There have been no reviews yet on products from this shop.';
-  $handler->display->display_options['empty']['area']['format'] = 'basic_html';
+  $handler->display->display_options['empty']['area']['format'] = 'ogmk_basic_html';
   /* Relationship: OG membership: OG membership from Node */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
