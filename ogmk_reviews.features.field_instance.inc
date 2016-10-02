@@ -24,6 +24,15 @@ function ogmk_reviews_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'ogmk_bootstrap_media' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 300,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 1,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -90,6 +99,12 @@ function ogmk_reviews_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 5,
       ),
+      'ogmk_bootstrap_media' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -149,6 +164,12 @@ function ogmk_reviews_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 0,
       ),
+      'ogmk_bootstrap_media' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -203,6 +224,20 @@ function ogmk_reviews_field_default_field_instances() {
         'type' => 'fivestar_formatter_default',
         'weight' => 1,
       ),
+      'ogmk_bootstrap_media' => array(
+        'label' => 'hidden',
+        'module' => 'fivestar',
+        'settings' => array(
+          'expose' => TRUE,
+          'style' => 'average',
+          'text' => 'none',
+          'widget' => array(
+            'fivestar_widget' => 'sites/all/modules/contrib/ogmk_reviews/fivestar/fontawesome-star.css',
+          ),
+        ),
+        'type' => 'fivestar_formatter_default',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'fivestar',
@@ -253,6 +288,12 @@ function ogmk_reviews_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'ogmk_bootstrap_media' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

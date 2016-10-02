@@ -103,7 +103,7 @@ function ogmk_reviews_strongarm() {
         'custom_settings' => FALSE,
       ),
       'ogmk_bootstrap_media' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'ogmk_manage_teaser' => array(
         'custom_settings' => FALSE,
@@ -131,6 +131,10 @@ function ogmk_reviews_strongarm() {
             'visible' => FALSE,
           ),
           'default' => array(
+            'weight' => '3',
+            'visible' => FALSE,
+          ),
+          'ogmk_bootstrap_media' => array(
             'weight' => '3',
             'visible' => FALSE,
           ),
