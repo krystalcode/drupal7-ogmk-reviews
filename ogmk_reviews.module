@@ -219,6 +219,17 @@ function ogmk_reviews_node_presave($node) {
 }
 
 /**
+ * Implements hook_fivestar_widgets().
+ */
+function ogmk_reviews_fivestar_widgets(){
+    $widgets = array(
+        drupal_get_path('module', 'ogmk_reviews') . '/fivestar/fontawesome-star.css' => 'fontawesome-star',
+    );
+
+    return $widgets;
+}
+
+/**
  * Public API.
  */
 

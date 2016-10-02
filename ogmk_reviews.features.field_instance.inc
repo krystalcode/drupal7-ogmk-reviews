@@ -197,7 +197,7 @@ function ogmk_reviews_field_default_field_instances() {
           'style' => 'average',
           'text' => 'none',
           'widget' => array(
-            'fivestar_widget' => 'sites/all/modules/contrib/fivestar/widgets/flames/flames.css',
+            'fivestar_widget' => 'sites/all/modules/contrib/ogmk_reviews/fivestar/fontawesome-star.css',
           ),
         ),
         'type' => 'fivestar_formatter_default',
@@ -211,7 +211,7 @@ function ogmk_reviews_field_default_field_instances() {
           'style' => 'average',
           'text' => 'none',
           'widget' => array(
-            'fivestar_widget' => 'sites/all/modules/contrib/fivestar/widgets/flames/flames.css',
+            'fivestar_widget' => 'sites/all/modules/contrib/ogmk_reviews/fivestar/fontawesome-star.css',
           ),
         ),
         'type' => 'fivestar_formatter_default',
@@ -236,7 +236,7 @@ function ogmk_reviews_field_default_field_instances() {
       'module' => 'fivestar',
       'settings' => array(
         'widget' => array(
-          'fivestar_widget' => 'sites/all/modules/contrib/fivestar/widgets/flames/flames.css',
+          'fivestar_widget' => 'sites/all/modules/contrib/ogmk_reviews/fivestar/fontawesome-star.css',
         ),
       ),
       'type' => 'stars',
