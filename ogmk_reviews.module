@@ -44,35 +44,8 @@ function ogmk_reviews_menu() {
  * Implements hook_form_FORM_ID_alter().
  */
 function ogmk_reviews_form_ogmk_review_node_form_alter(&$form, &$form_state, $form_id) {
-  // Get the line item's id since it is used in a couple of places later on.
-  // It is be better to get the line item id from the form rathern than the
-  // query parameter, since this is the value is going to be submitted.
-  $language = $form['ogmk_line_item_ref']['#language'];
-  $line_item_id = $form_state['entityreference_prepopulate']['node']['ogmk_review']['ogmk_line_item_ref'][0];
-
   global $user;
   if ((int) $user->uid !== 1) {
-    // Validate that the current user is the owner of the line item being
-    // reviewed.
-
-    // The user is stored in the order and not in the line item.
-    $line_item = commerce_line_item_load($line_item_id);
-    $order = commerce_order_load($line_item->order_id);
-
-    // Deny access to the form.
-    /**
-     * @Issue(
-     *   "Throw an Access Denied page instead so that the line item block isn't
-     *   rendered either"
-     *   type="improvement"
-     *   priority="normal"
-     *   labels="security"
-     * )
-     */
-    if ((int) $user->uid !== (int) $order->uid) {
-      $form['#access'] = FALSE;
-    }
-
     // The "product" node will be fetched from the line item and will be set when
     // the "review" node will be saved.
     $form['ogmk_node_product_ref']['#access'] = FALSE;
@@ -89,6 +62,35 @@ function ogmk_reviews_form_ogmk_review_node_form_alter(&$form, &$form_state, $fo
     $form['ogmk_line_item_ref']['#access'] = FALSE;
   }
 
+  // Action buttons improvements.
+  $form['actions']['submit']['#value'] = '<span class="fa fa-check"> ' . t('Submit') . '</span>';
+
+  // Logic for the add form only from this point onwards. We will be validating
+  // that the user is the owner of the line item, and that the line item does
+  // has not already been reviewed.
+  if ($form['nid']['#value'] !== NULL) {
+    return;
+  }
+
+  // Make sure that we have the review's line item avaiable.
+  /**
+   * @Issue(
+   *   "Display an Access Denied page instead of displaying an empty page"
+   *   type="improvement"
+   *   priority="normal"
+   *   labels="ux"
+   * )
+   */
+  if (empty($form_state['entityreference_prepopulate']['node']['ogmk_review']['ogmk_line_item_ref'])) {
+    $form['#access'] = FALSE;
+    return;
+  }
+
+  // Get the line item's id since it is used in a couple of places later on.
+  // It is be better to get the line item id from the form rathern than the
+  // query parameter, since this is the value is going to be submitted.
+  $line_item_id = $form_state['entityreference_prepopulate']['node']['ogmk_review']['ogmk_line_item_ref'][0];
+
   // Redirect to the Review page if one already exists for the requested line
   // item. There should only be one Review for each line item.
   $review_id = ogmk_base_line_item_has_referencing_review($line_item_id);
@@ -96,9 +98,26 @@ function ogmk_reviews_form_ogmk_review_node_form_alter(&$form, &$form_state, $fo
     drupal_goto('node/' . $review_id);
   }
 
-  // Action buttons improvements.
-  $form['actions']['submit']['#value'] = t('Submit');
-  $form['actions']['submit']['#attributes']['class'][] = 'fa fa-check';
+  // Validate that the current user is the owner of the line item being
+  // reviewed.
+
+  // The user is stored in the order and not in the line item.
+  $line_item = commerce_line_item_load($line_item_id);
+  $order = commerce_order_load($line_item->order_id);
+
+  // Deny access to the form.
+  /**
+   * @Issue(
+   *   "Throw an Access Denied page instead so that the line item block isn't
+   *   rendered either"
+   *   type="improvement"
+   *   priority="normal"
+   *   labels="security"
+   * )
+   */
+  if ((int) $user->uid !== (int) $order->uid) {
+    $form['#access'] = FALSE;
+  }
 
   /**
    * @Issue(
