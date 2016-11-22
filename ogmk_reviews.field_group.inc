@@ -132,7 +132,7 @@ function ogmk_reviews_field_group_info() {
     'label' => 'Row 1 Col 1 Row 2 Col 1',
     'weight' => '7',
     'children' => array(
-      0 => 'body',
+      0 => 'ogmk_text_with_summary',
     ),
     'format_type' => 'bootstrap_grid_col',
     'format_settings' => array(
