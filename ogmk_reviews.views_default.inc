@@ -29,11 +29,6 @@ function ogmk_reviews_views_default_views() {
    *   type="feature"
    *   priority="normal"
    * )
-   * @Issue(
-   *   "Add a view with already submitted reviews"
-   *   type="feature"
-   *   priority="normal"
-   * )
    */
 
   $view = new view();
