@@ -290,13 +290,13 @@ function ogmk_reviews_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="alert alert-info"><span class="fa fa-info-circle">Be an active part of our community by reviewing the products you have purchased. Reviews help our artisans and merchants improve the quality of the products and services they provide. They also help other people choose the products that best fit their needs.</div>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="alert alert-info"><span class="fa fa-info-circle"></span> Be an active part of our community by reviewing the products you have purchased. Reviews help our artisans and merchants improve the quality of the products and services they provide. They also help other people choose the products that best fit their needs.</div>';
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area_text_custom']['content'] = '<div class="alert alert-warning"><span class="fa fa-exclamation-triangle">There are no recently purchased products waiting for you to review them.</div>';
+  $handler->display->display_options['empty']['area_text_custom']['content'] = '<div class="alert alert-warning"><span class="fa fa-exclamation-triangle"></span> There are no recently purchased products waiting for you to review them.</div>';
   /* Relationship: Commerce Line Item: Order ID */
   $handler->display->display_options['relationships']['order_id']['id'] = 'order_id';
   $handler->display->display_options['relationships']['order_id']['table'] = 'commerce_line_item';
@@ -342,15 +342,25 @@ function ogmk_reviews_views_default_views() {
   $handler->display->display_options['filters']['nid']['field'] = 'nid';
   $handler->display->display_options['filters']['nid']['relationship'] = 'reverse_ogmk_line_item_ref_node';
   $handler->display->display_options['filters']['nid']['operator'] = 'empty';
+  /* Filter criterion: Commerce Line Item: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'commerce_line_item';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ogmk_product' => 'ogmk_product',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'user/%/reviews';
-  $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'My Reviews';
-  $handler->display->display_options['menu']['weight'] = '2';
+  $handler->display->display_options['path'] = 'user/%/reviews/pending';
+  $handler->display->display_options['menu']['type'] = 'default tab';
+  $handler->display->display_options['menu']['title'] = 'Pending';
+  $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $handler->display->display_options['tab_options']['type'] = 'tab';
+  $handler->display->display_options['tab_options']['title'] = 'My Reviews';
+  $handler->display->display_options['tab_options']['weight'] = '2';
   $translatables['ogmk_user_reviews'] = array(
     t('Master'),
     t('Pending Product Reviews'),
@@ -367,8 +377,8 @@ function ogmk_reviews_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('<div class="alert alert-info"><span class="fa fa-info-circle">Be an active part of our community by reviewing the products you have purchased. Reviews help our artisans and merchants improve the quality of the products and services they provide. They also help other people choose the products that best fit their needs.</div>'),
-    t('<div class="alert alert-warning"><span class="fa fa-exclamation-triangle">There are no recently purchased products waiting for you to review them.</div>'),
+    t('<div class="alert alert-info"><span class="fa fa-info-circle"></span> Be an active part of our community by reviewing the products you have purchased. Reviews help our artisans and merchants improve the quality of the products and services they provide. They also help other people choose the products that best fit their needs.</div>'),
+    t('<div class="alert alert-warning"><span class="fa fa-exclamation-triangle"></span> There are no recently purchased products waiting for you to review them.</div>'),
     t('Order'),
     t('Content referencing Commerce Line item from ogmk_line_item_ref'),
     t('Line item ID'),
@@ -378,6 +388,106 @@ function ogmk_reviews_views_default_views() {
     t('Page'),
   );
   $export['ogmk_user_reviews'] = $view;
+
+  $view = new view();
+  $view->name = 'ogmk_user_reviews_completed';
+  $view->description = '';
+  $view->tag = 'commerce, ogmk, reviews';
+  $view->base_table = 'node';
+  $view->human_name = 'OGMK User Reviews Completed';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'My Completed Reviews';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    2 => '2',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '12';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['view_mode'] = 'full';
+  /* No results behavior: Global: Unfiltered text */
+  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area_text_custom']['content'] = '<div class="alert alert-warning"><span class="fa fa-exclamation-triangle"></span> You have not authored any reviews yet. You may only review products that you have purchased.</div>';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Author uid */
+  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['table'] = 'node';
+  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['default_action'] = 'access denied';
+  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'current_user';
+  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['uid']['validate']['type'] = 'current_user_or_role';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ogmk_review' => 'ogmk_review',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'user/%/reviews/completed';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Completed';
+  $handler->display->display_options['menu']['weight'] = '1';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $translatables['ogmk_user_reviews_completed'] = array(
+    t('Master'),
+    t('My Completed Reviews'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('<div class="alert alert-warning"><span class="fa fa-exclamation-triangle"></span> You have not authored any reviews yet. You may only review products that you have purchased.</div>'),
+    t('All'),
+    t('Page'),
+  );
+  $export['ogmk_user_reviews_completed'] = $view;
 
   return $export;
 }
