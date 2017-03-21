@@ -170,8 +170,8 @@ function ogmk_reviews_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_ogmk_review';
   $strongarm->value = array(
-    0 => 'revision',
-    1 => 'revision_moderation',
+    0 => 'status',
+    1 => 'revision',
   );
   $export['node_options_ogmk_review'] = $strongarm;
 
