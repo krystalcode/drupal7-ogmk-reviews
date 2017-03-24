@@ -117,6 +117,7 @@ function ogmk_reviews_views_default_views() {
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $translatables['ogmk_product_reviews'] = array(
     t('Master'),
     t('Product Reviews'),
@@ -230,6 +231,7 @@ function ogmk_reviews_views_default_views() {
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
   $translatables['ogmk_shop_reviews'] = array(
     t('Master'),
     t('OGMK Shop Reviews'),
