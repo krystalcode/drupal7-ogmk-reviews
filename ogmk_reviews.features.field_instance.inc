@@ -10,81 +10,6 @@
 function ogmk_reviews_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-ogmk_review-ogmk_text_with_summary'.
-  $field_instances['node-ogmk_review-ogmk_text_with_summary'] = array(
-    'bundle' => 'ogmk_review',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
-      ),
-      'ogmk_bootstrap_media' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 300,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'ogmk_text_with_summary',
-    'label' => 'Body',
-    'required' => 1,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'ogmk_basic_html' => 0,
-          'ogmk_plain_html' => 'ogmk_plain_html',
-          'plain_text' => 0,
-        ),
-        'allowed_formats_toggle' => 1,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'ogmk_basic_html' => array(
-              'weight' => 0,
-            ),
-            'ogmk_plain_html' => array(
-              'weight' => 0,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-          ),
-        ),
-      ),
-      'display_summary' => 0,
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 2,
-    ),
-  );
-
   // Exported field_instance: 'node-ogmk_review-ogmk_line_item_ref'.
   $field_instances['node-ogmk_review-ogmk_line_item_ref'] = array(
     'bundle' => 'ogmk_review',
@@ -97,9 +22,21 @@ function ogmk_reviews_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'ogmk_bootstrap_media' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'ogmk_bootstrap_media_simple' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'rss' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -109,7 +46,7 @@ function ogmk_reviews_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -142,7 +79,7 @@ function ogmk_reviews_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -168,13 +105,29 @@ function ogmk_reviews_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'ogmk_bootstrap_media_simple' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 2,
+      ),
+      'rss' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 1,
+          'view_mode' => 'ogmk_bootstrap_media',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -199,7 +152,7 @@ function ogmk_reviews_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -237,6 +190,34 @@ function ogmk_reviews_field_default_field_instances() {
         ),
         'type' => 'fivestar_formatter_default',
         'weight' => 0,
+      ),
+      'ogmk_bootstrap_media_simple' => array(
+        'label' => 'hidden',
+        'module' => 'fivestar',
+        'settings' => array(
+          'expose' => TRUE,
+          'style' => 'average',
+          'text' => 'none',
+          'widget' => array(
+            'fivestar_widget' => 'sites/all/modules/contrib/ogmk_reviews/fivestar/fontawesome-star.css',
+          ),
+        ),
+        'type' => 'fivestar_formatter_default',
+        'weight' => 0,
+      ),
+      'rss' => array(
+        'label' => 'hidden',
+        'module' => 'fivestar',
+        'settings' => array(
+          'expose' => TRUE,
+          'style' => 'average',
+          'text' => 'none',
+          'widget' => array(
+            'fivestar_widget' => 'sites/all/modules/contrib/ogmk_reviews/fivestar/fontawesome-star.css',
+          ),
+        ),
+        'type' => 'fivestar_formatter_default',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -291,9 +272,21 @@ function ogmk_reviews_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'ogmk_bootstrap_media' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'ogmk_bootstrap_media_simple' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'rss' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -303,7 +296,7 @@ function ogmk_reviews_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
@@ -342,16 +335,212 @@ function ogmk_reviews_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 5,
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-ogmk_review-ogmk_text_long'.
+  $field_instances['node-ogmk_review-ogmk_text_long'] = array(
+    'bundle' => 'ogmk_review',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'ogmk_bootstrap_media' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'ogmk_bootstrap_media_simple' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'rss' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'ogmk_text_long',
+    'label' => 'Private Feedback',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'bonsai_html' => 0,
+          'ogmk_basic_html' => 'ogmk_basic_html',
+          'ogmk_html' => 0,
+          'ogmk_plain_html' => 'ogmk_plain_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'bonsai_html' => array(
+              'weight' => 0,
+            ),
+            'ogmk_basic_html' => array(
+              'weight' => 0,
+            ),
+            'ogmk_html' => array(
+              'weight' => 0,
+            ),
+            'ogmk_plain_html' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'context' => 'title',
+      'context_default' => 'sdl_editor_representation',
+      'dnd_enabled' => 0,
+      'entity_translation_sync' => FALSE,
+      'mee_enabled' => 0,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance: 'node-ogmk_review-ogmk_text_with_summary'.
+  $field_instances['node-ogmk_review-ogmk_text_with_summary'] = array(
+    'bundle' => 'ogmk_review',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'ogmk_bootstrap_media' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 300,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 1,
+      ),
+      'ogmk_bootstrap_media_simple' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 300,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 1,
+      ),
+      'rss' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'ogmk_text_with_summary',
+    'label' => 'Review',
+    'required' => 1,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'bonsai_html' => 0,
+          'ogmk_basic_html' => 0,
+          'ogmk_html' => 0,
+          'ogmk_plain_html' => 'ogmk_plain_html',
+          'plain_text' => 0,
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'bonsai_html' => array(
+              'weight' => 0,
+            ),
+            'ogmk_basic_html' => array(
+              'weight' => 0,
+            ),
+            'ogmk_html' => array(
+              'weight' => 0,
+            ),
+            'ogmk_plain_html' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'context' => 'title',
+      'context_default' => 'sdl_editor_representation',
+      'display_summary' => 0,
+      'dnd_enabled' => 0,
+      'entity_translation_sync' => FALSE,
+      'mee_enabled' => 0,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 43,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Body');
   t('Line Item');
+  t('Private Feedback');
   t('Product');
   t('Rating');
+  t('Review');
   t('Shop');
 
   return $field_instances;

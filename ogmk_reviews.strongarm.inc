@@ -100,7 +100,7 @@ function ogmk_reviews_strongarm() {
         'custom_settings' => FALSE,
       ),
       'rss' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'ogmk_bootstrap_media' => array(
         'custom_settings' => TRUE,
@@ -114,6 +114,12 @@ function ogmk_reviews_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'info' => array(
+        'custom_settings' => FALSE,
+      ),
+      'ogmk_bootstrap_media_simple' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -121,20 +127,34 @@ function ogmk_reviews_strongarm() {
           'weight' => '15',
         ),
         'path' => array(
+          'weight' => '5',
+        ),
+        'metatags' => array(
+          'weight' => '7',
+        ),
+        'xmlsitemap' => array(
           'weight' => '6',
         ),
       ),
       'display' => array(
         'sharethis' => array(
           'teaser' => array(
-            'weight' => '2',
-            'visible' => FALSE,
-          ),
-          'default' => array(
             'weight' => '3',
             'visible' => FALSE,
           ),
+          'default' => array(
+            'weight' => '4',
+            'visible' => FALSE,
+          ),
           'ogmk_bootstrap_media' => array(
+            'weight' => '4',
+            'visible' => FALSE,
+          ),
+          'rss' => array(
+            'weight' => '3',
+            'visible' => FALSE,
+          ),
+          'ogmk_bootstrap_media_simple' => array(
             'weight' => '3',
             'visible' => FALSE,
           ),
