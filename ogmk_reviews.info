@@ -82,3 +82,4 @@ features[views_view][] = ogmk_product_reviews
 features[views_view][] = ogmk_shop_reviews
 features[views_view][] = ogmk_user_reviews
 features[views_view][] = ogmk_user_reviews_completed
+features_exclude[variable][xmlsitemap_settings_node_ogmk_review] = xmlsitemap_settings_node_ogmk_review
