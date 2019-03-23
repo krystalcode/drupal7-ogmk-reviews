@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ogmk_reviews.features.metatag.inc
@@ -13,6 +14,7 @@ function ogmk_reviews_metatag_export_default() {
   // Exported Metatag config instance: node:ogmk_review.
   $config['node:ogmk_review'] = array(
     'instance' => 'node:ogmk_review',
+    'disabled' => FALSE,
     'config' => array(
       'image_src' => array(
         'value' => '[node:ogmk-node-product-ref:ogmk_images:1110]',

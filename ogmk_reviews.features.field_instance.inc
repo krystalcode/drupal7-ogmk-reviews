@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ogmk_reviews.features.field_instance.inc
@@ -96,6 +97,7 @@ function ogmk_reviews_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
+          'use_content_language' => TRUE,
           'view_mode' => 'ogmk_bootstrap_media',
         ),
         'type' => 'entityreference_entity_view',
@@ -118,6 +120,7 @@ function ogmk_reviews_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
+          'use_content_language' => TRUE,
           'view_mode' => 'ogmk_bootstrap_media',
         ),
         'type' => 'entityreference_entity_view',
