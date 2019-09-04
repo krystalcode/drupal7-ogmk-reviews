@@ -323,7 +323,7 @@ function ogmk_reviews_field_group_info() {
         'bootstrap_grid_col_lg' => '0',
         'required_fields' => 1,
         'classes' => 'group-r2 field-group-bootstrap_grid_row',
-        'description' => 'You may optionally give us any feedback that you do not wish to be publicly displayed and that will not be shared with anyone outside of the Ya Market.',
+        'description' => 'You may optionally give us any feedback that you do not wish to be publicly displayed and that will not be shared with anyone outside of the Inka Market.',
       ),
     ),
   );
