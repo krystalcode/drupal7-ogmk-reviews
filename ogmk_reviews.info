@@ -79,6 +79,7 @@ features[variable][] = node_submitted_ogmk_review
 features[variable][] = pathauto_node_ogmk_review_pattern
 features[variable][] = save_continue_ogmk_review
 features[views_view][] = ogmk_product_reviews
+features[views_view][] = ogmk_product_shop_reviews
 features[views_view][] = ogmk_shop_reviews
 features[views_view][] = ogmk_user_reviews
 features[views_view][] = ogmk_user_reviews_completed
